@@ -1,12 +1,27 @@
 @startuml
-Project <-- ProjectManager
-Class1 --> Project
+Project <-up- Team : associated <
+Team <- ProjectManager : leads <
+Project <- ProjectManager : manages <
+Project -down-> System : produce(Requirments) >
+Developer -> Team : 0..* 
+(System, Project) .. Requirements
+
+
 
 class Project {
     name : String
     startDate : Date
     endDate : Date
-  
+}
+
+class System {
+    percentage : Int
+    description : String
+}
+
+class Requirements {
+    percentage : Int
+    description : String
 }
 
 class ProjectManager {
@@ -14,8 +29,8 @@ class ProjectManager {
     telephone : Int
     team : String
 }
-ProjectManager : startproject()
+ProjectManager : startproject(Project)
 ProjectManager : Terminate(Project) 
-ArrayList : Object[] elementData
-ArrayList : size()
+Project : produce(Requirements)
+
 @enduml
