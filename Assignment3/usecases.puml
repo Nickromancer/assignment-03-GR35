@@ -19,3 +19,23 @@ ProjectManager : Terminate(Project)
 ArrayList : Object[] elementData
 ArrayList : size()
 @enduml
+
+@startuml
+hide empty description
+
+[*] --> Unmodified : Clone
+Unmodified --> Modified : Edit
+Modified --> Staged : Add
+Staged --> Unmodified : Commit
+
+@enduml
+
+@startuml
+hide empty description
+
+[*] --> Untracked : Create file
+Untracked --> Staged : Add
+Staged --> Unmodified : Commit
+Unmodified --> Modified : Edit
+
+@enduml
