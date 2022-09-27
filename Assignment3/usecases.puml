@@ -34,6 +34,20 @@ ProjectManager : Terminate(Project)
 
 @enduml
 
+Exercise 3 UML
+@startuml
+hide empty description
+
+[*] -right-> checkoutv3
+checkoutv3 -right-> setupdotnetv2
+setupdotnetv2 -right-> restore
+restore -right-> build
+build -right-> test
+test -right-> [*]
+
+@enduml
+
+//Exercise 4 first UML
 @startuml
 hide empty description
 
@@ -44,6 +58,7 @@ Staged --> Unmodified : Commit
 
 @enduml
 
+Exercise 4 second UML
 @startuml
 hide empty description
 
@@ -51,5 +66,61 @@ hide empty description
 Untracked --> Staged : Add
 Staged --> Unmodified : Commit
 Unmodified --> Modified : Edit
+Modified --> Staged : Add
 
 @enduml
+
+@startuml
+actor Actor
+alt
+Actor -> Button: dial phone number
+activate Actor
+activate Button
+Button -> ButtonDialerAdapter: 1 *buttonPressed
+deactivate Button
+
+activate ButtonDialerAdapter
+ButtonDialerAdapter -> Dialer: 1.1 digit(n)
+deactivate ButtonDialerAdapter
+
+activate Dialer
+Dialer -> Speaker: 1.1.2 tone(n)
+
+activate Speaker
+Speaker --> Actor: Make noise
+deactivate Speaker
+
+Dialer -> Screen: 1.1.1 displayDigit(n)
+deactivate Dialer
+
+activate Screen
+Screen --> Actor: feedback
+deactivate Screen
+
+else
+
+Actor -> Button: press send button
+activate Button
+Button -> SendButtonDialerAdapter: 2 buttonPressed
+deactivate Button
+
+activate SendButtonDialerAdapter
+SendButtonDialerAdapter -> Dialer: 2.1 Send
+deactivate SendButtonDialerAdapter
+
+activate Dialer
+Dialer -> Radio: 2.1.1 connect(pno)
+deactivate Dialer
+
+activate Radio
+Radio -> Screen: A1 inUse
+deactivate Radio
+
+activate Screen
+Screen --> Actor: feedback
+deactivate Screen
+deactivate Actor
+end
+@enduml
+
+
