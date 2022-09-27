@@ -31,6 +31,25 @@ class ProjectManager {
 }
 ProjectManager : startproject(Project)
 ProjectManager : Terminate(Project) 
-Project : produce(Requirements)
+
+@enduml
+
+@startuml
+hide empty description
+
+[*] --> Unmodified : Clone
+Unmodified --> Modified : Edit
+Modified --> Staged : Add
+Staged --> Unmodified : Commit
+
+@enduml
+
+@startuml
+hide empty description
+
+[*] --> Untracked : Create file
+Untracked --> Staged : Add
+Staged --> Unmodified : Commit
+Unmodified --> Modified : Edit
 
 @enduml
