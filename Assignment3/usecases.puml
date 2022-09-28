@@ -123,4 +123,31 @@ deactivate Actor
 end
 @enduml
 
+@startuml
 
+class User << (S,#FF7700) Singleton >>{
+  int UID
+  int currentSessionPatientID
+}
+
+class PatientInfo {
+  int PID
+  Summary summary
+  updateInfo()
+  updateSummary()
+}
+
+class Mentcare {
+  string updatePRS(UID)
+  string summarize(UID)
+}
+
+class Authorization {
+  bool authorize(TF, UID)
+}
+
+class PRS {
+  bool update(PID)
+}
+
+@enduml
