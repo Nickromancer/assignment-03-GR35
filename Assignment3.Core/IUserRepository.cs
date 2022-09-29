@@ -7,4 +7,4 @@ public interface IUserRepository
     UserDTO Read(int userId);
     Response Update(UserUpdateDTO user);
     Response Delete(int userId, bool force = false);
-}
+}   
