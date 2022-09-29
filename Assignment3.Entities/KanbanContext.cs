@@ -16,7 +16,7 @@ public class KanbanContext : DbContext
         //modelBuilder.Entity<Task>()
         //.HasIndex(t => t.title).IsRequired();
         modelBuilder.Entity<Task>()
-        .Property(s => s.states).HasColumnType("nvarchar(10)");
+        .Property(s => s.state).HasColumnType("nvarchar(10)");
 
         modelBuilder.Entity<Task>()
         .Property(t => t.Title).HasMaxLength(100);
